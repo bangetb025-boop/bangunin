@@ -55,8 +55,15 @@ class AlarmActivity : Activity() {
                 }
                 isLooping = true
                 setOnPreparedListener { it.start() }
-                setOnErrorListener { _, _, _ ->
-                    try { it.reset(); it.setDataSource(this@AlarmActivity, fallback); it.isLooping = true; it.prepareAsync() } catch (_: Exception) { }
+                setOnErrorListener { mp, _, _ ->
+                    try {
+                        mp.reset()
+                        mp.setDataSource(this@AlarmActivity, fallback)
+                        mp.isLooping = true
+                        mp.prepareAsync()
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
                     true
                 }
                 prepareAsync()
