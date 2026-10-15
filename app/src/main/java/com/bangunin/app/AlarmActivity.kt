@@ -61,9 +61,7 @@ class AlarmActivity : Activity() {
                         mp.setDataSource(this@AlarmActivity, fallback)
                         mp.isLooping = true
                         mp.prepareAsync()
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
+                    } catch (e: Exception) { e.printStackTrace() }
                     true
                 }
                 prepareAsync()
@@ -124,6 +122,7 @@ class AlarmActivity : Activity() {
                 player?.stop()
                 player?.release()
                 player = null
+                (getSystemService(NOTIFICATION_SERVICE) as android.app.NotificationManager).cancel(300)
                 Toast.makeText(this, "Foto berhasil diambil. Alarm berhenti.", Toast.LENGTH_LONG).show()
                 finish()
             } else {

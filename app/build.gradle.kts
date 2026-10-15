@@ -14,14 +14,4 @@ android {
         versionCode = 1
         versionName = "1.0"
     }
-
-    // Samakan versi Java dan Kotlin ke Java 17
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = "17"
-    }
 }
